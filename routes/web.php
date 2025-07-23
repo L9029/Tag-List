@@ -10,3 +10,4 @@ Route::get('/', function () {
 });
 
 Route::post('tags', [TagController::class, 'store'])->name('tags.store');
+Route::delete('tags/{id}', [TagController::class, 'destroy'])->name('tags.destroy');

@@ -23,4 +23,16 @@ class TagController extends Controller
         return redirect('/');
 
     }
+
+    public function destroy($id)
+    {
+        // Encuentra el tag por su ID
+        $tag = Tag::findOrFail($id);
+
+        // Elimina el tag de la base de datos
+        $tag->delete();
+
+        // Redirige a la ruta raíz
+        return redirect('/');
+    }
 }
