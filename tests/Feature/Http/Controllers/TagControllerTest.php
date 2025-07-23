@@ -46,4 +46,20 @@ class TagControllerTest extends TestCase
             "name" => $tag->name,
         ]);
     }
+
+    public function test_validate_name_required(): void
+    {
+        $this->withoutMiddleware(); // Desactiva el middleware para pruebas
+
+        // Realiza una solicitud POST a la ruta "tags" con un campo "name" vacío
+        $this
+            ->post("tags", [
+                "name" => "",
+            ])
+            // Verifica que la respuesta es un error de validación
+            ->assertSessionHasErrors(["tag"]);
+
+        // Verifica que no se haya creado ningún tag en la base de datos
+        $this->assertDatabaseCount("tags", 0);
+    }
 }
