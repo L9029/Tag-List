@@ -7,6 +7,14 @@
         <title>Laravel</title>
     </head>
     <body>
+
+        <form action="tags" method="post">
+            @csrf
+            <label for="tag">Nombre de la etiqueta</label>
+            <input type="text" name="tag" id="tag" required>
+            <button type="submit">Crear Etiqueta</button>
+        </form>
+
         <h4>Listado de Etiquetas</h4>
 
         <table>
@@ -14,6 +22,13 @@
                 <tr>
                     <td>
                         {{ $tag->name }}
+                    </td>
+                    <td>
+                        <form action="tags/{{ $tag->id }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Eliminar</button>
+                        </form>
                     </td>
                 </tr>
             @empty
