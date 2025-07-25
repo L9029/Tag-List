@@ -21,8 +21,11 @@
             <table class="table-auto w-full border-collapse border border-gray-300">
                 @forelse ($tags as $tag)
                     <tr class="{{ $loop->even ? 'bg-gray-100' : 'bg-gray-200' }}">
-                        <td class="px-4 py-2 text-center w-3/4">
+                        <td class="px-4 py-2 text-center w-2/4">
                             <span class="block w-full text-center">{{ $tag->name }}</span>
+                        </td>
+                        <td class="px-4 py-2 text-center w-2/4">
+                            <span class="block w-full text-center">{{ $tag->slug }}</span>
                         </td>
                         <td class="px-4 py-2 text-right w-1/4">
                             <form action="tags/{{ $tag->id }}" method="post" class="w-full">

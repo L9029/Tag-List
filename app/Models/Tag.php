@@ -13,4 +13,14 @@ class Tag extends Model
     protected $fillable = [
         'name'
     ];
+
+    /**
+     * Obtiene el slug para la etiqueta.
+     *
+     * @return string
+     */
+    public function getSlugAttribute(): string
+    {
+        return strtolower(str_replace(' ', '-', $this->name));
+    }
 }
